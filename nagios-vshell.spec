@@ -4,11 +4,12 @@
 Summary:	Nagios V-Shell
 Name:		nagios-%{pkg}
 Version:	1.8
-Release:	0.3
+Release:	0.4
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	http://assets.nagios.com/downloads/exchange/nagiosvshell/%{pkg}.tar.gz
 # Source0-md5:	802a80daa263b441af1b729cb3e7fa35
+Source1:	apache.conf
 Patch0:		config.patch
 URL:		http://exchange.nagios.org/directory/Addons/Frontends-(GUIs-and-CLIs)/Web-Interfaces/Nagios-V-2DShell/details
 Requires:	nagios-cgi
@@ -22,7 +23,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_webapps	/etc/webapps
 %define		_webapp		nagios-%{pkg}
 %define		_sysconfdir	%{_webapps}/%{_webapp}
-%define		_appdir		%{_datadir}/%{_webapp}
+%define		_appdir		%{_datadir}/nagios/%{pkg}
 
 %description
 Nagios V-Shell is a PHP web interface to Nagios Core that is designed
@@ -35,6 +36,9 @@ has gettext support for internationalization.
 mv %{pkg}/* .
 %patch0 -p1
 
+# standard license
+doc/gpl.txt
+
 # we handle ourself the installation
 mv install.php{,.sample}
 
@@ -45,7 +49,7 @@ cp -p *.php $RPM_BUILD_ROOT%{_appdir}
 cp -a controllers css data js locale views $RPM_BUILD_ROOT%{_appdir}
 
 cp -p config/vshell.conf $RPM_BUILD_ROOT%{_sysconfdir}
-cp -p config/vshell_apache.conf $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
+cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
 cp -p $RPM_BUILD_ROOT%{_sysconfdir}/{apache,httpd}.conf
 
 %clean
@@ -65,7 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc INSTALL.txt doc
+%doc INSTALL.txt doc/*
 %dir %attr(750,root,http) %{_sysconfdir}
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/apache.conf
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/httpd.conf
