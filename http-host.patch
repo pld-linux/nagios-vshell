@@ -1,0 +1,13 @@
+--- nagios-vshell-1.8/constants.inc.php~	2012-01-07 19:10:19.199751130 +0200
++++ nagios-vshell-1.8/constants.inc.php	2012-01-07 19:16:22.191650914 +0200
+@@ -52,8 +52,8 @@
+ 
+ ///////////////patch submitted by Dave Worth 11/18/2010 
+ //add support for https 
+-$SERVER_BASE = isset($_SERVER['SERVER_NAME']) ? 
+-                      $_SERVER['SERVER_NAME'] : $_SERVER['SERVER_ADDR'];
++$SERVER_BASE = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 
++	(isset($_SERVER['SERVER_NAME']) ?  $_SERVER['SERVER_NAME'] : $_SERVER['SERVER_ADDR']);
+  
+ $PROTO = isset($_SERVER['HTTPS']) ? 'https' : 'http';
+ $base = $PROTO.'://'.$SERVER_BASE;

@@ -11,6 +11,7 @@ Source0:	http://assets.nagios.com/downloads/exchange/nagiosvshell/%{pkg}.tar.gz
 # Source0-md5:	802a80daa263b441af1b729cb3e7fa35
 Source1:	apache.conf
 Patch0:		config.patch
+Patch1:		http-host.patch
 URL:		http://exchange.nagios.org/directory/Addons/Frontends-(GUIs-and-CLIs)/Web-Interfaces/Nagios-V-2DShell/details
 Requires:	nagios-cgi
 Requires:	webapps
@@ -35,6 +36,7 @@ has gettext support for internationalization.
 %setup -qc
 mv %{pkg}/* .
 %patch0 -p1
+%patch1 -p1
 
 # standard license
 doc/gpl.txt
