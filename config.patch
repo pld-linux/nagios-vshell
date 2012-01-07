@@ -1,5 +1,14 @@
---- nagios-vshell-1.8/config/vshell.conf~	2011-08-12 00:46:53.000000000 +0300
-+++ nagios-vshell-1.8/config/vshell.conf	2012-01-07 18:53:03.159606028 +0200
+--- nagios-vshell-1.8/config/vshell.conf	2012-01-07 18:53:03.159606028 +0200
++++ nagios-vshell-1.8/config/vshell.conf	2012-01-07 19:16:03.144184000 +0200
+@@ -10,7 +10,7 @@
+ ; The Apache URL path to V-Shell.
+ ; If you want to access V-Shell in the browser at http://<yourserver>/vshell/,
+ ; then set this to "vshell".
+-BASEURL = "vshell"
++BASEURL = "nagios/vshell"
+ 
+ ; The Apache URL path to your Nagios Core installation
+ ; If you access Nagios by visiting http://<yourserver>/nagios/,
 @@ -18,16 +18,16 @@
  COREURL = "nagios"
  
