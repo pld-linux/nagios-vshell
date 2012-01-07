@@ -1,18 +1,27 @@
 # TODO
 # - gettext to system dir
 %define		pkg	vshell
+%define		php_min_version 5.2.0
+%include	/usr/lib/rpm/macros.php
 Summary:	Nagios V-Shell
 Name:		nagios-%{pkg}
 Version:	1.8
-Release:	0.7
+Release:	0.8
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	http://assets.nagios.com/downloads/exchange/nagiosvshell/%{pkg}.tar.gz
 # Source0-md5:	802a80daa263b441af1b729cb3e7fa35
 Patch0:		config.patch
+BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 Patch1:		http-host.patch
 URL:		http://exchange.nagios.org/directory/Addons/Frontends-(GUIs-and-CLIs)/Web-Interfaces/Nagios-V-2DShell/details
 Requires:	nagios-cgi
+Requires:	php-common >= 4:%{php_min_version}
+Requires:	php-date
+Requires:	php-gettext
+Requires:	php-json
+Requires:	php-pcre
+Requires:	php-session
 Requires:	webapps
 Requires:	webserver(access)
 Requires:	webserver(alias)
@@ -23,6 +32,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_webapps	/etc/webapps
 %define		_sysconfdir	%{_webapps}/nagios
 %define		_appdir		%{_datadir}/nagios/%{pkg}
+
+# bad depsolver
+%define		_noautopear	pear
+# put it together for rpmbuild
+%define		_noautoreq	%{?_noautophp} %{?_noautopear}
 
 %description
 Nagios V-Shell is a PHP web interface to Nagios Core that is designed
