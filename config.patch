@@ -37,7 +37,7 @@
  // All other setting should be adjusted by editing vshell.conf
  // Switch to use external configuration file by Tony Yarusso, 30 March 2011
 -$ini_array = parse_ini_file("/etc/vshell.conf");
-+$ini_array = parse_ini_file("/etc/webapps/nagios-vshell/vshell.conf");
++$ini_array = parse_ini_file("/etc/webapps/nagios/vshell.conf");
  
  define('VERSION', '1.8'); 
  
