@@ -21,10 +21,6 @@ Requires:	php-gettext
 Requires:	php-json
 Requires:	php-pcre
 Requires:	php-session
-Requires:	webapps
-Requires:	webserver(access)
-Requires:	webserver(alias)
-Requires:	webserver(php)
 Suggests:	php-pecl-APC >= 3.0.13
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
