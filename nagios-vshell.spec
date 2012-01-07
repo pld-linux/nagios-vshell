@@ -4,7 +4,7 @@
 Summary:	Nagios V-Shell
 Name:		nagios-%{pkg}
 Version:	1.8
-Release:	0.4
+Release:	0.5
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	http://assets.nagios.com/downloads/exchange/nagiosvshell/%{pkg}.tar.gz
@@ -39,7 +39,7 @@ mv %{pkg}/* .
 %patch1 -p1
 
 # standard license
-doc/gpl.txt
+rm doc/gpl.txt
 
 # we handle ourself the installation
 mv install.php{,.sample}
