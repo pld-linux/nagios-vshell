@@ -1,5 +1,5 @@
---- nagios-vshell-1.8/config/vshell.conf	2012-01-07 18:53:03.159606028 +0200
-+++ nagios-vshell-1.8/config/vshell.conf	2012-01-07 19:16:03.144184000 +0200
+--- nagios-vshell-1.8/config/vshell.conf	2012-01-07 19:16:03.144184000 +0200
++++ nagios-vshell-1.8/config/vshell.conf	2012-01-08 02:38:08.766447936 +0200
 @@ -10,7 +10,7 @@
  ; The Apache URL path to V-Shell.
  ; If you want to access V-Shell in the browser at http://<yourserver>/vshell/,
@@ -9,7 +9,7 @@
  
  ; The Apache URL path to your Nagios Core installation
  ; If you access Nagios by visiting http://<yourserver>/nagios/,
-@@ -18,16 +18,16 @@
+@@ -18,19 +18,19 @@
  COREURL = "nagios"
  
  ; Full filesystem path to the Nagios status file
@@ -29,7 +29,11 @@
 +NAGCMD = "/var/lib/nagios/rw/nagios.cmd"
  
  ; Full filesystem path to the Nagios lock file (when Nagios is running)
- NAGLOCK = "/usr/local/nagios/var/nagios.lock"
+-NAGLOCK = "/usr/local/nagios/var/nagios.lock"
++NAGLOCK = "/var/lib/nagios/nagios.pid"
+ 
+ ; The default number of maximum results to display in a table before paging
+ RESULTLIMIT= 100
 --- nagios-vshell-1.8/constants.inc.php~	2011-09-19 19:52:27.000000000 +0300
 +++ nagios-vshell-1.8/constants.inc.php	2012-01-07 18:58:30.123327515 +0200
 @@ -66,7 +66,7 @@
