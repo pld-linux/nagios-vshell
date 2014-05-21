@@ -15,12 +15,12 @@ Patch2:		locale.patch
 URL:		http://exchange.nagios.org/directory/Addons/Frontends-(GUIs-and-CLIs)/Web-Interfaces/Nagios-V-2DShell/details
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 Requires:	nagios-cgi
-Requires:	php-common >= 4:%{php_min_version}
-Requires:	php-date
-Requires:	php-gettext
-Requires:	php-json
-Requires:	php-pcre
-Requires:	php-session
+Requires:	php(core) >= %{php_min_version}
+Requires:	php(date)
+Requires:	php(gettext)
+Requires:	php(json)
+Requires:	php(pcre)
+Requires:	php(session)
 Suggests:	php-pecl-APC >= 3.0.13
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -75,8 +75,8 @@ find locale -name '*mo' | while read mofile; do
 		;;
 	esac
 
-	install -d $RPM_BUILD_ROOT%{_datadir}/locale/$locale/LC_MESSAGES
-	cp -p $mofile $RPM_BUILD_ROOT%{_datadir}/locale/$locale/LC_MESSAGES/%{name}.mo
+	install -d $RPM_BUILD_ROOT%{_localedir}/$locale/LC_MESSAGES
+	cp -p $mofile $RPM_BUILD_ROOT%{_localedir}/$locale/LC_MESSAGES/%{name}.mo
 done
 
 %find_lang %{name}
