@@ -21,7 +21,7 @@ Requires:	php(gettext)
 Requires:	php(json)
 Requires:	php(pcre)
 Requires:	php(session)
-Suggests:	php-pecl-APC >= 3.0.13
+Suggests:	php(apc) >= 3.0.13
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
