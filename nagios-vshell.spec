@@ -1,6 +1,5 @@
 %define		pkg	vshell
 %define		php_min_version 5.2.0
-%include	/usr/lib/rpm/macros.php
 Summary:	Nagios V-Shell
 Name:		nagios-%{pkg}
 Version:	1.8
