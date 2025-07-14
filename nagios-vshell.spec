@@ -42,9 +42,9 @@ has gettext support for internationalization.
 # use versioned build dir
 %setup -qc
 mv %{pkg}/* .
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch -P0 -p1
+%patch -P1 -p1
+%patch -P2 -p1
 
 # standard license
 rm doc/gpl.txt
